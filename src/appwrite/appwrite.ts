@@ -1,12 +1,10 @@
 import { Client, Account, Databases } from "appwrite";
-
-const DB_URI = process.env.DB_URI;
-const PROJECT_ID = process.env.PROJECT_ID;
-
+import { config } from "@/conf/config";
+const { dbURL, projectId } = config;
 export const client = new Client();
 export const lineDB = new Databases(client);
 export const account = new Account(client);
-client.setEndpoint(DB_URI!).setProject(PROJECT_ID!);
+client.setEndpoint(dbURL).setProject(projectId);
 
 export const createAnonymousSession = async () => {
   try {
