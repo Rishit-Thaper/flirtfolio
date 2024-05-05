@@ -16,6 +16,7 @@ export const getLine = async () => {
   try {
     const response = await lineDB.listDocuments(databaseId, collectionId);
     if (response && response.documents && response.documents.length > 0) {
+      console.log("services", response);
       return response.documents;
     } else {
       console.log("No lines found in Appwrite collection");
