@@ -3,19 +3,9 @@ import React from "react";
 import { LineType } from "@/types/types";
 import useLineQuery from "@/hooks/useLineQuery";
 import Loader from "./Loader";
-import toast from "react-hot-toast";
+import { handleCopy } from "@/conf/Copy";
 const LineComponent = () => {
   const { getLineQuery } = useLineQuery();
-  const handleCopy = (pickupLine: string) => {
-    navigator.clipboard
-      .writeText(pickupLine)
-      .then(() => {
-        toast.success("Copy Hogya, ab bhejde usee 😁❤️!");
-      })
-      .catch((error) => {
-        console.error("Failed to copy pickup line:", error);
-      });
-  };
 
   return (
     <div className="lineComponent">
@@ -38,7 +28,7 @@ const LineComponent = () => {
                   onClick={() => handleCopy(line.pickupLine)}
                 >
                   <h4>{line.pickupLine}</h4>
-                  <p>By: {line.contributor}</p>
+                  <p>By: {line.contributor} | Click to Copy</p>
                 </div>
               ))}
           </>

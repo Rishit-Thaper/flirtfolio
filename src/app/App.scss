@@ -132,12 +132,17 @@ body {
   }
 }
 
-.line {
+.line,
+.line-random {
   border: 1px solid $color-5;
   margin: 0.5rem;
   border-radius: 10px;
   p {
-    margin-top: 0.3rem;
+    margin-top: 0.5rem;
     color: $color-5;
+    font-size: 0.8rem;
   }
+}
+.line-random {
+  border: 0;
 }
