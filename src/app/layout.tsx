@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Flirtfolio",
   description: "OpenSource Pickup Lines Repository",
   icons: {
-    icon: "/images/favicon.png",
+    icon: "/favicon.png",
   },
 };
 
