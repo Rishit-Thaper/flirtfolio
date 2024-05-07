@@ -2,17 +2,47 @@
 import React from "react";
 import { LineType } from "@/types/types";
 import useLineQuery from "@/hooks/useLineQuery";
+import Loader from "./Loader";
+import toast from "react-hot-toast";
 const LineComponent = () => {
   const { getLineQuery } = useLineQuery();
+  const handleCopy = (pickupLine: string) => {
+    navigator.clipboard
+      .writeText(pickupLine)
+      .then(() => {
+        toast.success("Copy Hogya, ab bhejde 😁!");
+      })
+      .catch((error) => {
+        console.error("Failed to copy pickup line:", error);
+      });
+  };
+
   return (
-    <div>
+    <div className="lineComponent">
       <>
-        {getLineQuery.data?.map((line: LineType, index: number) => (
+        {getLineQuery.isLoading ? (
+          <Loader />
+        ) : (
           <>
-            <h1 key={index}>{line.pickupLine}</h1>
-            <h1 key={index}>{line.contributor}</h1>
+            {getLineQuery.data
+              ?.sort((a: LineType, b: LineType) => {
+                return (
+                  new Date(b["$createdAt"]!).getTime() -
+                  new Date(a["$createdAt"]!).getTime()
+                );
+              })
+              .map((line: LineType, index: number) => (
+                <div
+                  className="line"
+                  key={index}
+                  onClick={() => handleCopy(line.pickupLine)}
+                >
+                  <h4>{line.pickupLine}</h4>
+                  <p>By: {line.contributor}</p>
+                </div>
+              ))}
           </>
-        ))}
+        )}
       </>
     </div>
   );

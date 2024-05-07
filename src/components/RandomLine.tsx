@@ -1,16 +1,22 @@
 "use client";
 import React from "react";
 import useLineQuery from "@/hooks/useLineQuery";
-
-const LineComponent = () => {
+import { toggleProps } from "./Footer";
+import { MdClose } from "react-icons/md";
+const LineComponent: React.FC<toggleProps> = ({ onClose }) => {
   const { getRandomQuery } = useLineQuery();
   const { data } = getRandomQuery;
   return (
-    <div>
-      <>
-        <h1>{data?.text}</h1>
-      </>
-    </div>
+    <>
+      <div className="modal-content">
+        <div className="modal-header">
+          <h2>{data?.text}</h2>
+          <span className="close-button" onClick={onClose}>
+            <MdClose />
+          </span>
+        </div>
+      </div>
+    </>
   );
 };
 

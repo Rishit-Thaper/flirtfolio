@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500&family=Poppins:wght@400;500&family=Work+Sans:wght@400;500&display=swap");
+@import "../styles/breakpoints";
+@import "../styles/mixins.scss";
+@import "../styles/colors";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 90vh;
+  text-decoration: none;
+  width: 100%;
+  background-color: $color-1;
+  color: $color-2;
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $color-2;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+  }
+}
+.main {
+  min-height: 80vh;
+  .lineComponent {
+    min-height: 80vh;
+    max-height: 80vh;
+    overflow-y: scroll;
+    .line {
+      padding: 1rem;
+    }
+  }
+}
+.header {
+  background-color: $color-3;
+  text-align: center;
+  margin-top: 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: none;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $color-3;
+  border-radius: 8px;
+  padding: 20px;
+  z-index: 1001;
+  display: none;
+}
+
+.modal-content {
+  form {
+    input {
+      width: 100%;
+      margin-top: 1rem;
+      padding: 0.8rem 0.4rem;
+      background: none;
+      color: $color-2;
+      outline: none;
+      border-radius: 5px;
+      border: 1px solid $color-2;
+    }
+    button {
+      width: 100%;
+      margin-top: 1rem;
+      @include buttonStyle($color-2, $color-3, $color-2);
+    }
+  }
+  @include md {
+    max-width: 400px;
+    min-width: 300px;
+  }
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  color: $danger-color;
+  right: 10px;
+  cursor: pointer;
+}
+
+.modal-overlay.active,
+.modal-container.active {
+  display: block;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.footerComponent {
+  background-color: $color-3;
+  text-align: center;
+  width: 100%;
+  bottom: 0;
+  position: sticky;
+  button {
+    width: 45%;
+    padding: 1rem 1rem;
+    @include buttonStyle($color-2, $color-3, $color-2);
+    margin: 0.5rem;
+  }
+}
+
+.line {
+  border: 1px solid $color-5;
+  margin: 0.5rem;
+  border-radius: 10px;
+  p {
+    margin-top: 0.3rem;
+    color: $color-5;
+  }
+}

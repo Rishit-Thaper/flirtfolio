@@ -1,4 +1,4 @@
-import { ID } from "appwrite";
+import { ID, Query } from "appwrite";
 import { lineDB } from "@/appwrite/appwrite";
 import { LineType } from "@/types/types";
 import { config } from "@/conf/config";
@@ -16,10 +16,9 @@ export const getLine = async () => {
   try {
     const response = await lineDB.listDocuments(databaseId, collectionId);
     if (response && response.documents && response.documents.length > 0) {
-      console.log("services", response);
       return response.documents;
     } else {
-      console.log("No lines found in Appwrite collection");
+      console.error("No lines found in Appwrite collection");
       return [];
     }
   } catch (error) {
