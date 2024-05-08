@@ -26,7 +26,7 @@ const useLineMutations = () => {
 
   const createLineMutation = useMutation({
     mutationFn: async (data: LineType) => {
-      const response = await fetch(`${apiURL}/api/lines`, {
+      const response = await fetch("/api/lines", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
