@@ -14,7 +14,9 @@ export const createLine = async (data: LineType) => {
 
 export const getLine = async () => {
   try {
-    const response = await lineDB.listDocuments(databaseId, collectionId);
+    const response = await lineDB.listDocuments(databaseId, collectionId, [
+      Query.limit(60),
+    ]);
     if (response && response.documents && response.documents.length > 0) {
       return response.documents;
     } else {
